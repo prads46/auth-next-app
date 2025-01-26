@@ -25,19 +25,19 @@ export default function SignupPage() {
             router.push("/login");
         } catch (error: any) {
             console.error("Signup failed:", error.response ? error.response.data : error.message);
-
-            if (error.response?.data?.error) {
-                toast.error(error.response.data.error);
-            } else {
-                toast.error("Something went wrong. Please try again.");
-            }
-        } finally {
+            
+            toast.error(error.message);
+        }finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        setButtonDisabled(!(user.email && user.password && user.username));
+        if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
     }, [user]);
 
     return (

@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema(
             type: Date,
         },
     },
-    { timestamps: true } // Adds createdAt and updatedAt fields
+    { timestamps: true }
 );
 
 // Model export
